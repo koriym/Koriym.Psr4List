@@ -9,9 +9,23 @@ namespace Koriym\Psr4List;
 class Psr4List
 {
     /**
+     * @param string $prefix
+     * @param string $path
+     *
      * @return \Generator
      */
     public function __invoke($prefix, $path)
+    {
+        return $this->invoke($prefix, $path);
+    }
+
+    /**
+     * @param string $prefix
+     * @param string $path
+     *
+     * @return \Generator
+     */
+    private function invoke($prefix, $path)
     {
         foreach ($this->files($path) as $item) {
             /** @var $item \SplFileInfo */
