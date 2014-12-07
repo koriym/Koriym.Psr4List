@@ -30,9 +30,8 @@ class Psr4List
         foreach ($this->files($path) as $item) {
             /** @var $item \SplFileInfo */
             $file = $item->getPathname();
-            $namePath = str_replace('\\', '/', $prefix);
-            $pos = strpos($file, $namePath);
-            $class = substr(str_replace('/', '\\', substr($file, $pos)), 0, -4);
+            $namePath = str_replace('/', '\\' , substr(substr($file, strlen($path) + 1), 0, -4));
+            $class = $prefix . '\\' . $namePath;
             if (! class_exists($class)) {
                 continue;
             }
