@@ -12,7 +12,7 @@ It gets the name of each of the files and class names of a particular PSR4 path.
 ## Installation
 
 ```bash
-$ composer require koriym/psr4list ~1.0@dev
+$ composer require koriym/psr4list ~1.0
 ```
 
 ## Usage
