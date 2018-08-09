@@ -6,7 +6,9 @@
  */
 namespace Koriym\Psr4List;
 
-class Psr4ListTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class Psr4ListTest extends TestCase
 {
     public function testGenerator()
     {
