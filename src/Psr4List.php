@@ -30,7 +30,6 @@ class Psr4List
     private function invoke($prefix, $path)
     {
         foreach ($this->files($path) as $item) {
-            /** @var SplFileInfo $item */
             $file = $item->getPathname();
             $namePath = str_replace('/', '\\' , substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;

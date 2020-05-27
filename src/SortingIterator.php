@@ -4,43 +4,53 @@
  *
  * @license http://opensource.org/licenses/bsd-license.php BSD
  */
+
 namespace Koriym\Psr4List;
 
 use ArrayIterator;
+use IteratorAggregate;
 use SplFileInfo;
 use Traversable;
 
-class SortingIterator implements \IteratorAggregate
+/**
+ * @template-implements IteratorAggregate<SplFileInfo>
+ */
+class SortingIterator implements IteratorAggregate
 {
     /**
-     * @var ArrayIterator
+     * @var ArrayIterator<int, SplFileInfo>
      */
     private $iterator;
 
-    /**
-     * @param Traversable $iterator
-     */
-    public function __construct(Traversable $iterator)
+    public function __construct(\RegexIterator $iterator)
     {
+        /** @var array{0: SplFileInfo, 1: SplFileInfo} $array */
         $array = iterator_to_array($iterator);
-        usort($array, /** @return int */function (SplFileInfo $a, SplFileInfo $b)
-        {
-            $pathA = $a->getPathname();
-            $pathB = $b->getPathname();
-            $cntA = count(explode('/', $pathA));
-            $cntB = count(explode('/', $pathB));
-            if ($cntA !== $cntB) {
-                return ($cntA > $cntB) ? 1 : -1;
-            }
-            return ($a->getPathname() > $b->getPathname()) ? 1 : -1;
-        });
+        usort($array,
+            /**
+             * @return int
+             */
+            function (SplFileInfo $a, SplFileInfo $b) {
+                $pathA = $a->getPathname();
+                $pathB = $b->getPathname();
+                $cntA = count(explode('/', $pathA));
+                $cntB = count(explode('/', $pathB));
+                if ($cntA !== $cntB) {
+                    return ($cntA > $cntB) ? 1 : -1;
+                }
+
+                return ($a->getPathname() > $b->getPathname()) ? 1 : -1;
+            });
+        /** @var array<int, SplFileInfo> $array */
         $this->iterator = new ArrayIterator($array);
     }
 
     /**
      * @return ArrayIterator
+     *
+     * @psalm-return ArrayIterator<int, SplFileInfo>
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return $this->iterator;
     }
