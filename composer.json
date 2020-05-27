@@ -5,6 +5,15 @@
         "PSR4"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Akihito Koriyama",
+            "email": "akihito.koriyama@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    },
     "autoload":{
         "psr-4":{
             "Koriym\\Psr4List\\": "src/"
