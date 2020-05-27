@@ -6,6 +6,8 @@
  */
 namespace Koriym\Psr4List;
 
+use SplFileInfo;
+
 class Psr4List
 {
     /**
@@ -28,7 +30,7 @@ class Psr4List
     private function invoke($prefix, $path)
     {
         foreach ($this->files($path) as $item) {
-            /** @var $item \SplFileInfo */
+            /** @var SplFileInfo $item */
             $file = $item->getPathname();
             $namePath = str_replace('/', '\\' , substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;
@@ -41,7 +43,9 @@ class Psr4List
     }
 
     /**
-     * @return \RegexIterator
+     * @param string $dir
+     *
+     * @return SortingIterator
      */
     private function files($dir)
     {
