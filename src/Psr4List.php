@@ -12,7 +12,7 @@ class Psr4List
      * @param string $prefix
      * @param string $path
      *
-     * @return \Generator
+     * @return \Generator<array{0: string, 0:string}>
      */
     public function __invoke($prefix, $path)
     {
@@ -23,12 +23,11 @@ class Psr4List
      * @param string $prefix
      * @param string $path
      *
-     * @return \Generator
+     * @return \Generator<array{0: string, 0:string}>
      */
     private function invoke($prefix, $path)
     {
         foreach ($this->files($path) as $item) {
-            /** @var $item \SplFileInfo */
             $file = $item->getPathname();
             $namePath = str_replace('/', '\\' , substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;
@@ -41,7 +40,9 @@ class Psr4List
     }
 
     /**
-     * @return \RegexIterator
+     * @param string $dir
+     *
+     * @return SortingIterator
      */
     private function files($dir)
     {
