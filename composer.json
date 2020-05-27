@@ -4,7 +4,7 @@
     "keywords":[
         "PSR4"
     ],
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "autoload":{
         "psr-4":{
             "Koriym\\Psr4List\\": "src/"
