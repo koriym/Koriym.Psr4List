@@ -31,7 +31,7 @@ class Psr4List
             $file = $item->getPathname();
             $namePath = str_replace('/', '\\' , substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;
-            if (! class_exists($class)) {
+            if (! class_exists($class) && ! interface_exists($class)) {
                 continue;
             }
 
