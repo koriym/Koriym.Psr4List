@@ -21,6 +21,7 @@ class Psr4ListTest extends TestCase
         }
         $expect = [
             'FakeVendor\FakePackage\One',
+            'FakeVendor\FakePackage\OneInterface',
             'FakeVendor\FakePackage\Two',
             'FakeVendor\FakePackage\Sub\Three',
             'FakeVendor\FakePackage\Sub\Sub\Four',
@@ -28,6 +29,7 @@ class Psr4ListTest extends TestCase
         $this->assertSame($expect, $classes);
         $expect = [
             $path . '/One.php',
+            $path . '/OneInterface.php',
             $path . '/Two.php',
             $path . '/Sub/Three.php',
             $path . '/Sub/Sub/Four.php',
