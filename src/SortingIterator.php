@@ -48,7 +48,7 @@ class SortingIterator implements IteratorAggregate
     /**
      * @return ArrayIterator<int, SplFileInfo>
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return $this->iterator;
     }
