@@ -7,6 +7,6 @@ nbproject
 .project
 .settings
 build/
-
 vendor/
-composer.phar
+.phpunit.result.cache
+composer.lock
