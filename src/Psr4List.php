@@ -27,7 +27,7 @@ class Psr4List
      * @param string $prefix
      * @param string $path
      *
-     * @return Generator<array{0: string, 1: string}>
+     * @return Generator<array{0: class-string, 1: string}>
      */
     public function __invoke($prefix, $path): Generator
     {
@@ -38,7 +38,7 @@ class Psr4List
      * @param string $prefix
      * @param string $path
      *
-     * @return Generator<array{0: class-string, 1: string}>
+     * @return Generator<array{0: string, 1: string}>
      */
     private function invoke($prefix, $path): Generator
     {
