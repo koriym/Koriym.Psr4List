@@ -1,24 +1,27 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Koriym.Psr4List
- *
- * @license http://opensource.org/licenses/bsd-license.php BSD
  */
+
 namespace Koriym\Psr4List;
 
 use PHPUnit\Framework\TestCase;
 
 class Psr4ListTest extends TestCase
 {
-    public function testGenerator()
+    public function testGenerator(): void
     {
-        $psr4List = new Psr4List;
+        $psr4List = new Psr4List();
         $prefix = 'FakeVendor\FakePackage';
         $path = __DIR__ . '/Fake/src';
         foreach ($psr4List($prefix, $path) as list($class, $file)) {
             $classes[] = $class;
             $files[] = $file;
         }
+
         $expect = [
             'FakeVendor\FakePackage\One',
             'FakeVendor\FakePackage\OneInterface',
@@ -37,14 +40,15 @@ class Psr4ListTest extends TestCase
         $this->assertSame($expect, $files);
     }
 
-    public function testInvalidPrefix()
+    public function testInvalidPrefix(): void
     {
-        $psr4List = new Psr4List;
+        $psr4List = new Psr4List();
         $prefix = 'FakeVendor\Invalid-name';
         $path = __DIR__ . '/Fake/src';
-        foreach ($psr4List($prefix, $path) as list($class, $file)) {
+        foreach ($psr4List($prefix, $path) as [$class, $file]) {
             $classes[] = $class;
         }
+
         $this->assertNotTrue(isset($classes));
     }
 }
