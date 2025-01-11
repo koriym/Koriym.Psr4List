@@ -26,9 +26,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          composer: '2.2'  # 古いPHPで動くComposerを固定
+          tools: composer:2.2  # Fixed composer version for legacy PHP compatibility
           coverage: none
-
       - name: Get composer cache directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
