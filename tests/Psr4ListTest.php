@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace Koriym\Psr4List;
 
 use PHPUnit\Framework\TestCase;
-use function sort;
 
 class Psr4ListTest extends TestCase
 {
