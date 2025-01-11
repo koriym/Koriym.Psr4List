@@ -12,9 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class Psr4ListTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    /** @return void */
     public function testGenerator()
     {
         $psr4List = new Psr4List();
@@ -43,9 +41,7 @@ class Psr4ListTest extends TestCase
         $this->assertSame($expect, $files);
     }
 
-    /**
-     * @return void
-     */
+    /** @return void */
     public function testInvalidPrefix()
     {
         $psr4List = new Psr4List();

@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This file is part of the Koriym.Psr4List
- */
-
 namespace Koriym\Psr4List;
 
 use ArrayIterator;
@@ -18,9 +14,7 @@ use function explode;
 use function iterator_to_array;
 use function usort;
 
-/**
- * @template-implements IteratorAggregate<SplFileInfo>
- */
+/** @template-implements IteratorAggregate<SplFileInfo> */
 class SortingIterator implements IteratorAggregate
 {
     /** @var ArrayIterator<int, SplFileInfo> */
@@ -32,9 +26,7 @@ class SortingIterator implements IteratorAggregate
         $array = iterator_to_array($iterator);
         usort(
             $array,
-            /**
-             * @return int
-             */
+            /** @return int */
             static function (SplFileInfo $a, SplFileInfo $b) {
                 $pathA = $a->getPathname();
                 $pathB = $b->getPathname();
@@ -51,9 +43,7 @@ class SortingIterator implements IteratorAggregate
         $this->iterator = new ArrayIterator($array);
     }
 
-    /**
-     * @return ArrayIterator<int, SplFileInfo>
-     */
+    /** @return ArrayIterator<int, SplFileInfo> */
     public function getIterator(): ArrayIterator
     {
         return $this->iterator;

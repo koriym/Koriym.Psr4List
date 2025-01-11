@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This file is part of the Koriym.Psr4List
- */
-
 namespace Koriym\Psr4List;
 
 use FilesystemIterator;
@@ -54,9 +50,7 @@ class Psr4List
         }
     }
 
-    /**
-     * @param string $dir
-     */
+    /** @param string $dir */
     private function files($dir): SortingIterator
     {
         return new SortingIterator(
