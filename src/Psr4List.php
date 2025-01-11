@@ -39,7 +39,7 @@ class Psr4List
     private function invoke($prefix, $path): Generator
     {
         foreach ($this->files($path) as $item) {
-            $file = $item->getPathname();
+            $file = str_replace('\\', '/', $item->getPathname());
             $namePath = str_replace('/', '\\', substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;
             if (! class_exists($class) && ! interface_exists($class)) {

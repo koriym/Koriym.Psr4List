@@ -28,9 +28,8 @@ class SortingIterator implements IteratorAggregate
             $array,
             /** @return int */
             static function (SplFileInfo $a, SplFileInfo $b) {
-                $pathA = $a->getPathname();
-                $pathB = $b->getPathname();
-                $cntA = count(explode('/', $pathA));
+                $pathA = str_replace('\\', '/', $a->getPathname());
+                $pathB = str_replace('\\', '/', $b->getPathname());                $cntA = count(explode('/', $pathA));
                 $cntB = count(explode('/', $pathB));
                 if ($cntA !== $cntB) {
                     return $cntA > $cntB ? 1 : -1;
