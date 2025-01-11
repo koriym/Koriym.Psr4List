@@ -12,9 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class Psr4ListTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    /** @return void */
     public function testGenerator()
     {
         $psr4List = new Psr4List();
@@ -33,19 +31,18 @@ class Psr4ListTest extends TestCase
             'FakeVendor\FakePackage\Sub\Sub\Four',
         ];
         $this->assertSame($expect, $classes);
+        $normlizedPath = str_replace('\\', '/', $path);
         $expect = [
-            $path . '/One.php',
-            $path . '/OneInterface.php',
-            $path . '/Two.php',
-            $path . '/Sub/Three.php',
-            $path . '/Sub/Sub/Four.php',
+            $normlizedPath . '/One.php',
+            $normlizedPath . '/OneInterface.php',
+            $normlizedPath . '/Two.php',
+            $normlizedPath . '/Sub/Three.php',
+            $normlizedPath . '/Sub/Sub/Four.php',
         ];
         $this->assertSame($expect, $files);
     }
 
-    /**
-     * @return void
-     */
+    /** @return void */
     public function testInvalidPrefix()
     {
         $psr4List = new Psr4List();

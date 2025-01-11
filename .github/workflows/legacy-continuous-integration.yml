@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Continuous Integration (legacy)
 
 on:
   push:
@@ -16,25 +16,18 @@ jobs:
           - ubuntu-latest
           - windows-latest
         php-version:
-          - '7.2'
-          - '7.3'
-          - '7.4'
-          - '8.1'
-          - '8.2'
-          - '8.3'
-          - '8.4'
+          - '7.0'
+          - '7.1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup PHP ${{ matrix.php-version }}
+      - name: Setup PHP (legacy)
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+          tools: composer:2.2  # Fixed composer version for legacy PHP compatibility
           coverage: none
-          tools: none
-          ini-values: assert.exception=1, zend.assertions=1
-
       - name: Get composer cache directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"

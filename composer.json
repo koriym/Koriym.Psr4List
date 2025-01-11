@@ -26,5 +26,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0 || ^7.0 || ^9.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": false,
+            "bamarni/composer-bin-plugin": true
+        }
     }
 }

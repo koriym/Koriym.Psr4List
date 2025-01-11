@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This file is part of the Koriym.Psr4List
- */
-
 namespace Koriym\Psr4List;
 
 use FilesystemIterator;
@@ -43,7 +39,7 @@ class Psr4List
     private function invoke($prefix, $path): Generator
     {
         foreach ($this->files($path) as $item) {
-            $file = $item->getPathname();
+            $file = str_replace('\\', '/', $item->getPathname());
             $namePath = str_replace('/', '\\', substr(substr($file, strlen($path) + 1), 0, -4));
             $class = $prefix . '\\' . $namePath;
             if (! class_exists($class) && ! interface_exists($class)) {
@@ -54,9 +50,7 @@ class Psr4List
         }
     }
 
-    /**
-     * @param string $dir
-     */
+    /** @param string $dir */
     private function files($dir): SortingIterator
     {
         return new SortingIterator(
