@@ -8,6 +8,7 @@ use ArrayIterator;
 use IteratorAggregate;
 use RegexIterator;
 use SplFileInfo;
+use Traversable;
 
 use function count;
 use function explode;
@@ -29,7 +30,8 @@ class SortingIterator implements IteratorAggregate
             /** @return int */
             static function (SplFileInfo $a, SplFileInfo $b) {
                 $pathA = str_replace('\\', '/', $a->getPathname());
-                $pathB = str_replace('\\', '/', $b->getPathname());                $cntA = count(explode('/', $pathA));
+                $pathB = str_replace('\\', '/', $b->getPathname());
+                $cntA = count(explode('/', $pathA));
                 $cntB = count(explode('/', $pathB));
                 if ($cntA !== $cntB) {
                     return $cntA > $cntB ? 1 : -1;
@@ -43,7 +45,7 @@ class SortingIterator implements IteratorAggregate
     }
 
     /** @return ArrayIterator<int, SplFileInfo> */
-    public function getIterator(): ArrayIterator
+    public function getIterator(): Traversable
     {
         return $this->iterator;
     }
