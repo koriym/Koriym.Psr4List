@@ -9,6 +9,8 @@
 /psalm.xml                       export-ignore
 /phpunit.xml.dist                export-ignore
 /.github                         export-ignore
+/CLAUDE.md                       export-ignore
+/vendor-bin                      export-ignore
 
 # Configure diff output for .php and .phar files.
 *.php diff=php
